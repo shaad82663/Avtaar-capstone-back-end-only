@@ -21,11 +21,23 @@ npm install
 ```sh
 npm run start
 ```
-
+id
 - The ouput in the termnal will be :
 >Listening Server over port 4000 in DEVELOMENT mode.
 >
 >mongoDB Database is connected with mongodb://localhost:27017/avtaar-mohd-shadab
+
+# DATABASE
+
+## TABLE-1 : USER 
+     Schema : {name,age,gender,email,password} //All not null
+     Primary Key : _id (auto generated)
+     Methods/Functions : [getJwtToken(), comparePassword()]
+     
+## TABLE-2 : EVENT
+     Schema : {name, description, uid, location, startDate, endDate} // All not null
+     Primary Key : _id (auto generated)
+     Foreign Key : uid (From User Table)
 
 # REST API
 
