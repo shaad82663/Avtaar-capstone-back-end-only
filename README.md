@@ -124,7 +124,7 @@ The REST API used in the code is described below.
      "description" : "myDesc",
      "location" : "Delhi 12/32 Sk-col",
      "uid" : "61b4458d9bf1b284025e9987",
-     "startDate" : "2021-12-01",
+     "startDate" : "2021-12-13",
      "endDate" : "2021-12-15"
     }
 
