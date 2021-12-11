@@ -9,7 +9,7 @@ You'll need to have node.js installed in the machine. Git Bash is suggested as a
 
 - After clonning the repository, Navigate to the project folder by running following command in terminal:
 ```sh
- cd avtaar-capstone/
+ cd Avtaar-capstone-back-end-only/
 ```
 
 - Run the following command to install the all the node.js packages that are used in the code.
