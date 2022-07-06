@@ -1,7 +1,4 @@
-### NOTE :
-Front End functionality is not added yet.
-
-# avtaar-capstone 
+# Event Booking REST API 
 
 ##  Steps to run the code (Windows OS)
 
