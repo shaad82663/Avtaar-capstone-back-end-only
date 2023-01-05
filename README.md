@@ -55,7 +55,7 @@ The REST API used in the code is described below.
     "age" : 20,
     "gender" : "MALE",
     "email" : "shaad82663@gmail.com",
-    "password" : "122333Shaad#"
+    "password" : "123456"
     }
     
 ### Response
@@ -77,7 +77,7 @@ The REST API used in the code is described below.
   
     {
     "email" : "shaad82663@gmail.com",
-    "password" : "122333Shaad#"
+    "password" : "123456"
     }
     
 ### Response
