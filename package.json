@@ -1,7 +1,7 @@
 {
-  "name": "avtaar",
+  "name": "urlshortner",
   "version": "1.0.0",
-  "description": "Avataar Assignments Coded By Mohd Shadab(7302946970)",
+  "description": "URL-shortner for Internshala Assignment",
   "main": "server.js",
   "scripts": {
     "start": "nodemon back-end/server.js",
@@ -18,6 +18,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
     "nodemon": "^2.0.15",
+    "shortid": "^2.2.16",
+    "valid-url": "^1.0.9",
     "validator": "^13.7.0"
   }
 }
