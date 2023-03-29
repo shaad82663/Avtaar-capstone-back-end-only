@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
 
+const jwt = require("jsonwebtoken");
+
 //Error Handler for catching async errors separately.
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 
@@ -14,7 +16,6 @@ exports.registerUser = catchAsyncErrors (async (req, res, next) => {
   const {name, email, password} = req.body;
 
   const user = await User.create(req.body);
-
    sendToken(user ,200 ,res); 
 })
 
@@ -33,12 +34,12 @@ exports.logInUser = catchAsyncErrors( async (req, res, next) => {
     }
 
     const isPasswordMatched = await user.comparePassword(password);
-    console.log(isPasswordMatched)
+    // console.log(isPasswordMatched)
+
     if(!isPasswordMatched){
         console.log("password not matched");
         return next(new ErrorHandler("Invalid email or password"), 401);
     }
-
     sendToken(user ,200 ,res); 
 })
 
@@ -48,22 +49,29 @@ exports.logout = catchAsyncErrors( async (req, res, next) => {
         expires : new Date(Date.now()),
         httpOnly : true
     })
-
+ 
     res.status(200).json({
         success : true,
         message : "Logged out"
     })
 })
 
+// GET => /me
+exports.getUser = catchAsyncErrors( async (req, res, next) => {
+    const { token } = req.cookies; 
+    console.log('it ' , req.headers.authorization)
+    if(!token) {
+        return next(new ErrorHandler("Login first to access resourses.", 401));
+    }
+ 
+     //Verifying token using jsonwebtoken (jwt)
+     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-//To get all users for a list of uid     GET =>  /api/v1/users
-exports.getUsers = catchAsyncErrors (async (req, res, next) => {
-    const ids = req.body.uid;
-    const users = await User.find({'_id' : {$in : ids} });
-
+     //Assigning id to the user.
+     const user = await User.findById(decoded.id);
+     
     res.status(200).json({
         success : true,
-        users
+        user
     })
 })
-

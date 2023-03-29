@@ -2,3 +2,4 @@
 .DS_Store
 node_modules
 front-end
+back-end/config/config.env

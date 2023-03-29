@@ -2,8 +2,27 @@ const validator = require("validator");
 const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const ErrorHandler = require('../utils/errorHandler');
+const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
  
+function validateMaxlength(value, maxlength) {
+    if (value && value.length > maxlength) {
+        return next(new ErrorHandler('No membership found for given user', 404));
+     }
+  }
+
+
 const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        validate: {
+          validator: function(v) {
+            return validateMaxlength(v, 4);
+          }
+        }
+      },
    email : {
     type : String,
     required : [true, "Please enter your email"],
